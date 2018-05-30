@@ -14,6 +14,7 @@ class App extends Component {
     console.log(this.state.bins);
   }
 
+// sets the bins
   startGame() {
     setInterval(() => {
       this.setState( {
@@ -22,6 +23,7 @@ class App extends Component {
     }, 1500);
   }
 
+// determines which bins have paper in them?
   getBinsState() {
     let bins = [];
     for (let i = 0; i < 9; i++){
@@ -31,6 +33,7 @@ class App extends Component {
     return bins;
   }
 
+
   onTrashClicked = () => {
     // Fill this in!
   }
@@ -38,7 +41,11 @@ class App extends Component {
   render() {
     const bins = this.state.bins.map((bin, index) => {
       return (
-        <Trash key={`trash-${index}`} />
+
+          <Trash
+            key={`trash-${index}`}
+            isBinFilled={bin.isTrashVisible}
+          />
       );
     });
 
